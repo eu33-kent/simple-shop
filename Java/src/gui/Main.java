@@ -71,6 +71,9 @@ public class Main {
 		// set up the variables
 		String detailsQuery = "SELECT uid, firstName, lastName FROM users WHERE login = ?;";
 		String[] detailsParams = new String[] {login};
+		// vulnerable to SQL Injection
+		//ArrayList<String> details = Databaser.query("SELECT uid, firstName, lastName FROM users WHERE login = '" + login + "';", detailsParams).get(0);
+		// not vulnerable
 		ArrayList<String> details = Databaser.query(detailsQuery, detailsParams).get(0);
 		ArrayList<String> columns = Databaser.getColumns(detailsQuery, detailsParams);
 		String firstName = details.get(columns.indexOf("firstName"));

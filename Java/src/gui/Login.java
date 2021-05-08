@@ -123,6 +123,9 @@ public class Login {
 				if (Databaser.login(login, pass)) { // validate login details
 					//Main.main(new String[] { login }); // open main menu
 					new Main(login); // open main menu
+					// vulnerable to SQL Injection
+					//String uid = Databaser.query("SELECT uid FROM users WHERE login = '" + login + "';", new String[0]).get(0).get(0);
+					// not vulnerable
 					String uid = Databaser.query("SELECT uid FROM users WHERE login = ?;", new String[] {login}).get(0).get(0);
 					Databaser.log(uid, "Logged in.");
 					frmLogin.dispose(); // close login menu

@@ -35,7 +35,9 @@ public class Databaser {
 	 */
 	public static boolean login(String login, String pass) {
 		String hashed = Hash.getHash(pass);
+		// vulnerable to SQL Injection
 		//if (query("SELECT * FROM users WHERE login = '" + login + "' AND passHash = '" + hashed + "';", new String[0]).size() < 1) return false;
+		// not vulnerable
 		if (query("SELECT * FROM users WHERE login = ? AND passHash = ?;", new String[] {login, hashed}).size() < 1) return false;
 		return true;
 	}
@@ -67,6 +69,10 @@ public class Databaser {
 	public static ArrayList<ArrayList<String>> query(String query, String[] params) { // return query results
 		ArrayList<ArrayList<String>> results = new ArrayList<ArrayList<String>>();
 		try {
+			// vulnerable to SQL Injection
+			//connect = DriverManager.getConnection(db, user, pass);
+			//result = connect.createStatement().executeQuery(query);
+			// not vulnerable
 			result = prepare(query, params).executeQuery();
 			ResultSetMetaData rsmd = result.getMetaData();
 			ArrayList<String> columns = new ArrayList<String>(); // stores the names of columns in the table
@@ -99,8 +105,7 @@ public class Databaser {
 	public static boolean modify(String query, String[] params) {
 		try {
 			prepare(query, params).executeUpdate();
-			// close the database connection
-			connect.close();
+			connect.close(); // close the database connection
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
