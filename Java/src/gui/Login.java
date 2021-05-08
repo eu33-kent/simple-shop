@@ -5,17 +5,36 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.JTextField;
+
+import functions.Databaser;
+
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
 
 public class Login {
 
 	private JFrame frmLogin;
+	private JTextField txtUsername;
+	private JPasswordField txtPassword;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,20 +61,78 @@ public class Login {
 		frmLogin = new JFrame();
 		frmLogin.getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		frmLogin.setTitle("Login");
-		frmLogin.setBounds(100, 100, 450, 300);
+		frmLogin.setBounds(100, 100, 450, 400);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		frmLogin.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel lblNewLabel = new JLabel("Login");
-		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
-		frmLogin.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		GridBagConstraints gbc_lblLogin = new GridBagConstraints();
+		gbc_lblLogin.insets = new Insets(0, 0, 5, 5);
+		gbc_lblLogin.gridx = 1;
+		gbc_lblLogin.gridy = 0;
+		frmLogin.getContentPane().add(lblLogin, gbc_lblLogin);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_lblUsername = new GridBagConstraints();
+		gbc_lblUsername.anchor = GridBagConstraints.WEST;
+		gbc_lblUsername.insets = new Insets(0, 0, 5, 5);
+		gbc_lblUsername.gridx = 1;
+		gbc_lblUsername.gridy = 2;
+		frmLogin.getContentPane().add(lblUsername, gbc_lblUsername);
+		
+		txtUsername = new JTextField();
+		txtUsername.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_txtUsername = new GridBagConstraints();
+		gbc_txtUsername.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtUsername.insets = new Insets(0, 0, 5, 5);
+		gbc_txtUsername.gridx = 1;
+		gbc_txtUsername.gridy = 3;
+		frmLogin.getContentPane().add(txtUsername, gbc_txtUsername);
+		txtUsername.setColumns(10);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_lblPassword = new GridBagConstraints();
+		gbc_lblPassword.anchor = GridBagConstraints.WEST;
+		gbc_lblPassword.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPassword.gridx = 1;
+		gbc_lblPassword.gridy = 5;
+		frmLogin.getContentPane().add(lblPassword, gbc_lblPassword);
+		
+		txtPassword = new JPasswordField();
+		txtPassword.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_txtPassword = new GridBagConstraints();
+		gbc_txtPassword.insets = new Insets(0, 0, 5, 5);
+		gbc_txtPassword.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtPassword.gridx = 1;
+		gbc_txtPassword.gridy = 6;
+		frmLogin.getContentPane().add(txtPassword, gbc_txtPassword);
+		txtPassword.setColumns(10);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String login = txtUsername.getText(), pass = new String(txtPassword.getPassword());
+				if (Databaser.login(login, pass)) { // validate login details
+					Main.main(new String[] { login }); // open main menu
+					String uid = Databaser.query("SELECT uid FROM users WHERE login = '" + login + "';").get(0).get(0);
+					Databaser.log(uid, "Logged in.");
+					frmLogin.dispose(); // close login menu
+				} else JOptionPane.showMessageDialog(null, "Incorrect login details!", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		});
+		btnLogin.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
+		gbc_btnLogin.insets = new Insets(0, 0, 5, 5);
+		gbc_btnLogin.gridx = 1;
+		gbc_btnLogin.gridy = 8;
+		frmLogin.getContentPane().add(btnLogin, gbc_btnLogin);
 	}
 }
