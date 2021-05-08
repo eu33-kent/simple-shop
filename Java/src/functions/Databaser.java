@@ -5,7 +5,27 @@ import java.util.ArrayList;
 
 public class Databaser {
 
+	private static Connection connect;
 	private static ResultSet result;
+	
+	private static String
+		db = "jdbc:mysql://localhost/simpleShop",
+		user = "root",
+		pass = "pass";
+	
+	private static PreparedStatement prepare(String query, String[] params) {
+		try {
+			connect = DriverManager.getConnection(db, user, pass);
+			PreparedStatement stmt = connect.prepareStatement(query);
+			for (int i = 0; i < params.length; i++) {
+				stmt.setString(i+1, params[i]);
+			}
+			return stmt;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	/**
 	 * Checks the user's credentials to see if they're valid
@@ -15,7 +35,8 @@ public class Databaser {
 	 */
 	public static boolean login(String login, String pass) {
 		String hashed = Hash.getHash(pass);
-		if (query("SELECT * FROM users WHERE login = '" + login + "' AND passHash = '" + hashed + "';").size() < 1) return false;
+		//if (query("SELECT * FROM users WHERE login = '" + login + "' AND passHash = '" + hashed + "';", new String[0]).size() < 1) return false;
+		if (query("SELECT * FROM users WHERE login = ? AND passHash = ?;", new String[] {login, hashed}).size() < 1) return false;
 		return true;
 	}
 	
@@ -26,20 +47,14 @@ public class Databaser {
 	 * @return a string indicating the reason for failure, or "success"
 	 */
 	public static String register(String login, String pass, String first, String last) {
-		if (login.length() < 5) {
-			return "Your user login is too short.";
-		}
-		if (pass.length() < 8) {
-			return "Your password is too short.";
-		}
-		if (query("SELECT * FROM users WHERE login = '" + login + "';").size() > 0) {
-			return "This user already exists.";
-		}
+		if (login.length() < 5) return "Your user login is too short.";
+		if (pass.length() < 8) return "Your password is too short.";
+		if (query("SELECT * FROM users WHERE login = ?;", new String[] {login}).size() > 0) return "This user already exists.";
 
 		String hashed = Hash.getHash(pass);
 		Boolean success = modify(
-			"INSERT INTO users (login, passHash, firstName, lastName)"
-			+ "VALUES ('" + login + "', '" + hashed + "', '" + first + "', '" + last + "')"
+				"INSERT INTO users (login, passHash, firstName, lastName) VALUES (?, ?, ?, ?)",
+				new String[] {login, hashed, first, last}
 		); // add new user to database
 		return success ? "success" : "fail";
 	}
@@ -49,12 +64,10 @@ public class Databaser {
 	 * @param query the SQL query as a string
 	 * @return an ArrayList of rows with a nested ArrayList of strings for each value in the row
 	 */
-	public static ArrayList<ArrayList<String>> query(String query) { // return query results
+	public static ArrayList<ArrayList<String>> query(String query, String[] params) { // return query results
 		ArrayList<ArrayList<String>> results = new ArrayList<ArrayList<String>>();
 		try {
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/simpleShop", "root", "pass");
-			result = connect.createStatement().executeQuery(query);
-
+			result = prepare(query, params).executeQuery();
 			ResultSetMetaData rsmd = result.getMetaData();
 			ArrayList<String> columns = new ArrayList<String>(); // stores the names of columns in the table
 			for (int i = 1; i <= rsmd.getColumnCount(); i++) { // iterate over columns in table
@@ -69,7 +82,6 @@ public class Databaser {
 				results.add(curr);
 			}
 			// System.out.println(results);
-
 			// close the database connection
 			connect.close();
 			result.close();
@@ -84,11 +96,10 @@ public class Databaser {
 	 * @param query the SQL query to execute
 	 * @return true if successful, false if not
 	 */
-	public static boolean modify(String query) {
-		Connection connect;
+	public static boolean modify(String query, String[] params) {
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost/simpleShop", "root", "pass");
-			connect.createStatement().executeUpdate(query);
+			prepare(query, params).executeUpdate();
+			// close the database connection
 			connect.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -102,11 +113,10 @@ public class Databaser {
 	 * @param query the SQL query to execute
 	 * @return the names of the columns
 	 */
-	public static ArrayList<String> getColumns(String query) {
+	public static ArrayList<String> getColumns(String query, String[] params) {
 		ArrayList<String> columns = new ArrayList<String>();
 		try {
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/simpleShop", "root", "pass");
-			result = connect.createStatement().executeQuery(query);
+			result = prepare(query, params).executeQuery();
 			
 			ResultSetMetaData rsmd = result.getMetaData();
 			for (int i = 1; i <= rsmd.getColumnCount(); i++) { // iterate over columns in table
@@ -128,6 +138,6 @@ public class Databaser {
 	 * @return whether the query succeeded or failed
 	 */
 	public static boolean log(String uid, String action) {
-		return modify("INSERT INTO logs VALUES ('" + action + "', CURRENT_TIMESTAMP, " + uid + ")");
+		return modify("INSERT INTO logs VALUES (?, CURRENT_TIMESTAMP, ?)", new String[] {action, uid});
 	}
 }

@@ -121,8 +121,9 @@ public class Login {
 			public void actionPerformed(ActionEvent arg0) {
 				String login = txtUsername.getText(), pass = new String(txtPassword.getPassword());
 				if (Databaser.login(login, pass)) { // validate login details
-					Main.main(new String[] { login }); // open main menu
-					String uid = Databaser.query("SELECT uid FROM users WHERE login = '" + login + "';").get(0).get(0);
+					//Main.main(new String[] { login }); // open main menu
+					new Main(login); // open main menu
+					String uid = Databaser.query("SELECT uid FROM users WHERE login = ?;", new String[] {login}).get(0).get(0);
 					Databaser.log(uid, "Logged in.");
 					frmLogin.dispose(); // close login menu
 				} else JOptionPane.showMessageDialog(null, "Incorrect login details!", "Error", JOptionPane.ERROR_MESSAGE);
