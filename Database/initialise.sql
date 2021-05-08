@@ -4,6 +4,8 @@ CREATE DATABASE simpleShop;
 USE simpleShop;
 
 DROP TABLE IF EXISTS logs;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -20,6 +22,18 @@ CREATE TABLE logs (
     uid INT NOT NULL,
     PRIMARY KEY (action, timestamp, uid),
     FOREIGN KEY (uid) REFERENCES users(uid)
+);
+CREATE TABLE products (
+	pid INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+CREATE TABLE orders (
+	oid INT PRIMARY KEY AUTO_INCREMENT,
+    uid INT,
+    pid INT,
+    FOREIGN KEY (uid) REFERENCES users(uid),
+    FOREIGN KEY (pid) REFERENCES products(pid)
 );
 
 INSERT INTO users (login, passHash, firstName, lastName)
