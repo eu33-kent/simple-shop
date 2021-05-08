@@ -28,23 +28,6 @@ public class Main {
 	private JTextField txtSearch;
 
 	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					login = args[0];
-					Main window = new Main();
-					window.frmMain.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
 	 * Create the application.
 	 */
 	public Main(String login) {
@@ -116,14 +99,15 @@ public class Main {
 		btnAccount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Account(login);
-				//Databaser.log(uid, "Viewed account details.");
+				Databaser.log(uid, "Viewed account details.");
 			}
 		});
 		
 		JButton btnFunds = new JButton("Add Funds");
 		btnFunds.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Funds(login);
+				new Funds(uid, login);
+				frmMain.dispose();
 			}
 		});
 		btnFunds.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -145,7 +129,7 @@ public class Main {
 		btnOrders.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Orders(login);
-				//Databaser.log(uid, "Viewed orders.");
+				Databaser.log(uid, "Viewed orders.");
 			}
 		});
 		btnOrders.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -181,7 +165,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				String search = txtSearch.getText();
 				new Search(search);
-				//Databaser.log(uid, "Searched for '" + search + "'");
+				Databaser.log(uid, "Searched for '" + search + "'.");
 			}
 		});
 		btnSearch.setFont(new Font("Segoe UI", Font.PLAIN, 14));

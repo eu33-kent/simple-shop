@@ -145,4 +145,10 @@ public class Databaser {
 	public static boolean log(String uid, String action) {
 		return modify("INSERT INTO logs VALUES (?, CURRENT_TIMESTAMP, ?)", new String[] {action, uid});
 	}
+	
+	public static boolean updateBalance(String uid, double amount) {
+		double oldAmt = Double.parseDouble(query("SELECT balance FROM users WHERE uid = ?", new String[] {uid}).get(0).get(0));
+		double newAmt = oldAmt + amount;
+		return modify("UPDATE users SET balance = ? WHERE uid = ?", new String[] {Double.toString(newAmt), uid});
+	}
 }
