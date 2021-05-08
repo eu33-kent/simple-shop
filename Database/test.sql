@@ -1,6 +1,6 @@
 SELECT * FROM users;
 
-SELECT * FROM logs;
+SELECT * FROM logs ORDER BY timestamp;
 
 SELECT * FROM products;
 

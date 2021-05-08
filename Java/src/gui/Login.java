@@ -53,6 +53,15 @@ public class Login {
 	public Login() {
 		initialize();
 	}
+	
+	/**
+	 * Constructor for logging in after registering
+	 */
+	public Login(String login) {
+		initialize();
+		txtUsername.setText(login);
+		frmLogin.setVisible(true);
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -65,12 +74,12 @@ public class Login {
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		frmLogin.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel lblLogin = new JLabel("Login");
+		JLabel lblLogin = new JLabel("Login to simple-shop");
 		lblLogin.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		GridBagConstraints gbc_lblLogin = new GridBagConstraints();
 		gbc_lblLogin.insets = new Insets(0, 0, 5, 5);
@@ -138,5 +147,27 @@ public class Login {
 		gbc_btnLogin.gridx = 1;
 		gbc_btnLogin.gridy = 8;
 		frmLogin.getContentPane().add(btnLogin, gbc_btnLogin);
+		
+		JLabel lblRegister = new JLabel("Don't have an account?");
+		lblRegister.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_lblRegister = new GridBagConstraints();
+		gbc_lblRegister.insets = new Insets(0, 0, 5, 5);
+		gbc_lblRegister.gridx = 1;
+		gbc_lblRegister.gridy = 10;
+		frmLogin.getContentPane().add(lblRegister, gbc_lblRegister);
+		
+		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Register();
+				frmLogin.dispose();
+			}
+		});
+		btnRegister.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		GridBagConstraints gbc_btnRegister = new GridBagConstraints();
+		gbc_btnRegister.insets = new Insets(0, 0, 5, 5);
+		gbc_btnRegister.gridx = 1;
+		gbc_btnRegister.gridy = 11;
+		frmLogin.getContentPane().add(btnRegister, gbc_btnRegister);
 	}
 }
