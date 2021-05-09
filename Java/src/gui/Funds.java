@@ -40,8 +40,7 @@ public class Funds {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmFunds = new JFrame();
-		frmFunds.setTitle("Add Funds");
+		frmFunds = new JFrame("Add Funds");
 		frmFunds.setBounds(100, 100, 450, 450);
 		frmFunds.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();

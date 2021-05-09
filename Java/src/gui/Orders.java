@@ -27,8 +27,7 @@ public class Orders {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmOrders = new JFrame();
-		frmOrders.setTitle("Orders");
+		frmOrders = new JFrame("Orders");
 		frmOrders.setBounds(100, 100, 450, 300);
 		frmOrders.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}

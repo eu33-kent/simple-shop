@@ -45,8 +45,7 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmMain = new JFrame();
-		frmMain.setTitle("Main Menu");
+		frmMain = new JFrame("Main Menu");
 		frmMain.setBounds(100, 100, 600, 500);
 		frmMain.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();

@@ -27,8 +27,7 @@ public class Account {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmAccount = new JFrame();
-		frmAccount.setTitle("Account");
+		frmAccount = new JFrame("Account");
 		frmAccount.setBounds(100, 100, 450, 300);
 		frmAccount.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}

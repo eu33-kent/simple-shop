@@ -55,8 +55,7 @@ public class Search {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmSearch = new JFrame();
-		frmSearch.setTitle("Search Products");
+		frmSearch = new JFrame("Search Products");
 		frmSearch.setBounds(100, 100, 650, 650);
 		frmSearch.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();

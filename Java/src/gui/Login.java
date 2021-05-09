@@ -67,9 +67,8 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmLogin = new JFrame();
+		frmLogin = new JFrame("Login");
 		frmLogin.getContentPane().setFont(Globals.font);
-		frmLogin.setTitle("Login");
 		frmLogin.setBounds(100, 100, 450, 400);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();

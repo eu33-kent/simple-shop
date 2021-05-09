@@ -51,9 +51,7 @@ public class Register {
 	 */
 	private void initialize() {
 		// set up the window
-		frmRegister = new JFrame();
-		frmRegister.setResizable(false);
-		frmRegister.setTitle("Register");
+		frmRegister = new JFrame("Register");
 		frmRegister.setBounds(100, 100, 500, 700);
 		frmRegister.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// create grid bag layout for simpler form element positioning
