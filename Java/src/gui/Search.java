@@ -7,7 +7,6 @@ import java.awt.Image;
 
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -69,21 +68,15 @@ public class Search {
 		
 		JLabel lblSearch = new JLabel("Search for products:");
 		lblSearch.setFont(Globals.font(18));
-		GridBagConstraints gbc_lblSearch = new GridBagConstraints();
+		GridBagConstraints gbc_lblSearch = Globals.gbc(2,1);
 		gbc_lblSearch.gridwidth = 3;
-		gbc_lblSearch.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSearch.gridx = 2;
-		gbc_lblSearch.gridy = 1;
 		frmSearch.getContentPane().add(lblSearch, gbc_lblSearch);
 		
 		txtSearch = new JTextField();
 		txtSearch.setFont(Globals.font);
-		GridBagConstraints gbc_txtSearch = new GridBagConstraints();
+		GridBagConstraints gbc_txtSearch = Globals.gbc(2,3);
 		gbc_txtSearch.gridwidth = 2;
-		gbc_txtSearch.insets = new Insets(0, 0, 5, 5);
 		gbc_txtSearch.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtSearch.gridx = 2;
-		gbc_txtSearch.gridy = 3;
 		frmSearch.getContentPane().add(txtSearch, gbc_txtSearch);
 		txtSearch.setColumns(10);
 		txtSearch.setText(search);
@@ -95,22 +88,16 @@ public class Search {
 			}
 		});
 		btnSearch.setFont(Globals.font);
-		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-		gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSearch.gridx = 4;
-		gbc_btnSearch.gridy = 3;
+		GridBagConstraints gbc_btnSearch = Globals.gbc(4,3);
 		frmSearch.getContentPane().add(btnSearch, gbc_btnSearch);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Results (displays 10):", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		GridBagConstraints gbc_scrollPane = Globals.gbc(1,5);
 		gbc_scrollPane.gridwidth = 5;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 1;
-		gbc_scrollPane.gridy = 5;
 		frmSearch.getContentPane().add(scrollPane, gbc_scrollPane);
 	}
 	

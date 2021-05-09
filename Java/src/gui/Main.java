@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.UIManager;
 
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -80,20 +79,14 @@ public class Main {
 		
 		JLabel lblWelcome = new JLabel("Welcome, " + firstName + ".");
 		lblWelcome.setFont(Globals.font(24));
-		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
+		GridBagConstraints gbc_lblWelcome = Globals.gbc(1,0);
 		gbc_lblWelcome.gridwidth = 2;
-		gbc_lblWelcome.insets = new Insets(0, 0, 5, 5);
-		gbc_lblWelcome.gridx = 1;
-		gbc_lblWelcome.gridy = 0;
 		frmMain.getContentPane().add(lblWelcome, gbc_lblWelcome);
 		
 		JLabel lblBalance = new JLabel("Balance: £" + balance);
 		lblBalance.setFont(Globals.font(12));
-		GridBagConstraints gbc_lblBalance = new GridBagConstraints();
+		GridBagConstraints gbc_lblBalance = Globals.gbc(1,1);
 		gbc_lblBalance.anchor = GridBagConstraints.EAST;
-		gbc_lblBalance.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBalance.gridx = 1;
-		gbc_lblBalance.gridy = 1;
 		frmMain.getContentPane().add(lblBalance, gbc_lblBalance);
 		
 		JButton btnAccount = new JButton("View Account Details");
@@ -112,18 +105,12 @@ public class Main {
 			}
 		});
 		btnFunds.setFont(Globals.font(12));
-		GridBagConstraints gbc_btnFunds = new GridBagConstraints();
+		GridBagConstraints gbc_btnFunds = Globals.gbc(2,1);
 		gbc_btnFunds.anchor = GridBagConstraints.WEST;
-		gbc_btnFunds.insets = new Insets(0, 0, 5, 5);
-		gbc_btnFunds.gridx = 2;
-		gbc_btnFunds.gridy = 1;
 		frmMain.getContentPane().add(btnFunds, gbc_btnFunds);
 		btnAccount.setFont(Globals.font(12));
-		GridBagConstraints gbc_btnAccount = new GridBagConstraints();
+		GridBagConstraints gbc_btnAccount = Globals.gbc(1,2);
 		gbc_btnAccount.gridwidth = 2;
-		gbc_btnAccount.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAccount.gridx = 1;
-		gbc_btnAccount.gridy = 2;
 		frmMain.getContentPane().add(btnAccount, gbc_btnAccount);
 		
 		JButton btnOrders = new JButton("View Orders");
@@ -134,31 +121,22 @@ public class Main {
 			}
 		});
 		btnOrders.setFont(Globals.font(12));
-		GridBagConstraints gbc_btnOrders = new GridBagConstraints();
+		GridBagConstraints gbc_btnOrders = Globals.gbc(1,3);
 		gbc_btnOrders.gridwidth = 2;
-		gbc_btnOrders.insets = new Insets(0, 0, 5, 5);
-		gbc_btnOrders.gridx = 1;
-		gbc_btnOrders.gridy = 3;
 		frmMain.getContentPane().add(btnOrders, gbc_btnOrders);
 		
 		JLabel lblSearch = new JLabel("Search for products:");
 		lblSearch.setFont(Globals.font);
-		GridBagConstraints gbc_lblSearch = new GridBagConstraints();
+		GridBagConstraints gbc_lblSearch = Globals.gbc(1,5);
 		gbc_lblSearch.gridwidth = 2;
-		gbc_lblSearch.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSearch.gridx = 1;
-		gbc_lblSearch.gridy = 5;
 		frmMain.getContentPane().add(lblSearch, gbc_lblSearch);
 		
 		txtSearch = new JTextField();
 		txtSearch.setColumns(1);
 		txtSearch.setFont(Globals.font(18));
-		GridBagConstraints gbc_txtSearch = new GridBagConstraints();
+		GridBagConstraints gbc_txtSearch = Globals.gbc(1,6);
 		gbc_txtSearch.gridwidth = 2;
 		gbc_txtSearch.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtSearch.insets = new Insets(0, 0, 5, 5);
-		gbc_txtSearch.gridx = 1;
-		gbc_txtSearch.gridy = 6;
 		frmMain.getContentPane().add(txtSearch, gbc_txtSearch);
 		
 		JButton btnSearch = new JButton("Search");
@@ -169,12 +147,9 @@ public class Main {
 			}
 		});
 		btnSearch.setFont(Globals.font);
-		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
+		GridBagConstraints gbc_btnSearch = Globals.gbc(1,7);
 		gbc_btnSearch.anchor = GridBagConstraints.NORTH;
 		gbc_btnSearch.gridwidth = 2;
-		gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSearch.gridx = 1;
-		gbc_btnSearch.gridy = 7;
 		frmMain.getContentPane().add(btnSearch, gbc_btnSearch);
 	}
 }

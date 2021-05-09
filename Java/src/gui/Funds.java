@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -54,64 +53,43 @@ public class Funds {
 		
 		JLabel lblAddFunds = new JLabel("Add Funds");
 		lblAddFunds.setFont(Globals.font(18));
-		GridBagConstraints gbc_lblAddFunds = new GridBagConstraints();
-		gbc_lblAddFunds.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAddFunds.gridx = 1;
-		gbc_lblAddFunds.gridy = 1;
+		GridBagConstraints gbc_lblAddFunds = Globals.gbc(1,1);
 		frmFunds.getContentPane().add(lblAddFunds, gbc_lblAddFunds);
 		
 		JButton btn5 = new JButton("\u00A35.00");
 		addFunctionality(btn5, 5.00);
 		btn5.setFont(Globals.font);
-		GridBagConstraints gbc_btn5 = new GridBagConstraints();
-		gbc_btn5.insets = new Insets(0, 0, 5, 5);
-		gbc_btn5.gridx = 1;
-		gbc_btn5.gridy = 3;
+		GridBagConstraints gbc_btn5 = Globals.gbc(1,3);
 		frmFunds.getContentPane().add(btn5, gbc_btn5);
 		
 		JButton btn10 = new JButton("\u00A310.00");
 		addFunctionality(btn10, 10.00);
 		btn10.setFont(Globals.font);
-		GridBagConstraints gbc_btn10 = new GridBagConstraints();
-		gbc_btn10.insets = new Insets(0, 0, 5, 5);
-		gbc_btn10.gridx = 1;
-		gbc_btn10.gridy = 4;
+		GridBagConstraints gbc_btn10 = Globals.gbc(1,4);
 		frmFunds.getContentPane().add(btn10, gbc_btn10);
 		
 		JButton btn20 = new JButton("\u00A320.00");
 		addFunctionality(btn20, 20.00);
 		btn20.setFont(Globals.font);
-		GridBagConstraints gbc_btn20 = new GridBagConstraints();
-		gbc_btn20.insets = new Insets(0, 0, 5, 5);
-		gbc_btn20.gridx = 1;
-		gbc_btn20.gridy = 5;
+		GridBagConstraints gbc_btn20 = Globals.gbc(1,5);
 		frmFunds.getContentPane().add(btn20, gbc_btn20);
 		
 		JButton btn50 = new JButton("\u00A350.00");
 		addFunctionality(btn50, 50.00);
 		btn50.setFont(Globals.font);
-		GridBagConstraints gbc_btn50 = new GridBagConstraints();
-		gbc_btn50.insets = new Insets(0, 0, 5, 5);
-		gbc_btn50.gridx = 1;
-		gbc_btn50.gridy = 6;
+		GridBagConstraints gbc_btn50 = Globals.gbc(1,6);
 		frmFunds.getContentPane().add(btn50, gbc_btn50);
 		
 		JButton btn100 = new JButton("\u00A3100.00");
 		addFunctionality(btn100, 100.00);
 		btn100.setFont(Globals.font);
-		GridBagConstraints gbc_btn100 = new GridBagConstraints();
-		gbc_btn100.insets = new Insets(0, 0, 5, 5);
-		gbc_btn100.gridx = 1;
-		gbc_btn100.gridy = 7;
+		GridBagConstraints gbc_btn100 = Globals.gbc(1,7);
 		frmFunds.getContentPane().add(btn100, gbc_btn100);
 		
 		JButton btn250 = new JButton("\u00A3250.00");
 		addFunctionality(btn250, 250.00);
 		btn250.setFont(Globals.font);
-		GridBagConstraints gbc_btn250 = new GridBagConstraints();
-		gbc_btn250.insets = new Insets(0, 0, 5, 5);
-		gbc_btn250.gridx = 1;
-		gbc_btn250.gridy = 8;
+		GridBagConstraints gbc_btn250 = Globals.gbc(1,8);
 		frmFunds.getContentPane().add(btn250, gbc_btn250);
 		
 		JButton btnGoBack = new JButton("Go Back");
@@ -122,10 +100,7 @@ public class Funds {
 			}
 		});
 		btnGoBack.setFont(Globals.font);
-		GridBagConstraints gbc_btnGoBack = new GridBagConstraints();
-		gbc_btnGoBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGoBack.gridx = 1;
-		gbc_btnGoBack.gridy = 10;
+		GridBagConstraints gbc_btnGoBack = Globals.gbc(1,10);
 		frmFunds.getContentPane().add(btnGoBack, gbc_btnGoBack);
 	}
 	
