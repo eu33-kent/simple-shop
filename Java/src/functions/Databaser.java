@@ -143,7 +143,7 @@ public class Databaser {
 	 * @return whether the query succeeded or failed
 	 */
 	public static boolean log(String uid, String action) {
-		return modify("INSERT INTO logs VALUES (?, CURRENT_TIMESTAMP, ?)", new String[] {action, uid});
+		return modify("INSERT INTO logs VALUES (?, NOW(), ?)", new String[] {action, uid});
 	}
 	
 	public static boolean updateBalance(String uid, double amount) {
