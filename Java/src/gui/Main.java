@@ -164,8 +164,7 @@ public class Main {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String search = txtSearch.getText();
-				new Search(search);
-				Databaser.log(uid, "Searched for '" + search + "'.");
+				new Search(uid, search);
 			}
 		});
 		btnSearch.setFont(new Font("Segoe UI", Font.PLAIN, 14));
