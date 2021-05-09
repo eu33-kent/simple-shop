@@ -4,13 +4,13 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import functions.Databaser;
+import functions.Globals;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -53,7 +53,7 @@ public class Funds {
 		frmFunds.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblAddFunds = new JLabel("Add Funds");
-		lblAddFunds.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		lblAddFunds.setFont(Globals.font(18));
 		GridBagConstraints gbc_lblAddFunds = new GridBagConstraints();
 		gbc_lblAddFunds.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAddFunds.gridx = 1;
@@ -62,7 +62,7 @@ public class Funds {
 		
 		JButton btn5 = new JButton("\u00A35.00");
 		addFunctionality(btn5, 5.00);
-		btn5.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btn5.setFont(Globals.font);
 		GridBagConstraints gbc_btn5 = new GridBagConstraints();
 		gbc_btn5.insets = new Insets(0, 0, 5, 5);
 		gbc_btn5.gridx = 1;
@@ -71,7 +71,7 @@ public class Funds {
 		
 		JButton btn10 = new JButton("\u00A310.00");
 		addFunctionality(btn10, 10.00);
-		btn10.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btn10.setFont(Globals.font);
 		GridBagConstraints gbc_btn10 = new GridBagConstraints();
 		gbc_btn10.insets = new Insets(0, 0, 5, 5);
 		gbc_btn10.gridx = 1;
@@ -80,7 +80,7 @@ public class Funds {
 		
 		JButton btn20 = new JButton("\u00A320.00");
 		addFunctionality(btn20, 20.00);
-		btn20.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btn20.setFont(Globals.font);
 		GridBagConstraints gbc_btn20 = new GridBagConstraints();
 		gbc_btn20.insets = new Insets(0, 0, 5, 5);
 		gbc_btn20.gridx = 1;
@@ -89,7 +89,7 @@ public class Funds {
 		
 		JButton btn50 = new JButton("\u00A350.00");
 		addFunctionality(btn50, 50.00);
-		btn50.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btn50.setFont(Globals.font);
 		GridBagConstraints gbc_btn50 = new GridBagConstraints();
 		gbc_btn50.insets = new Insets(0, 0, 5, 5);
 		gbc_btn50.gridx = 1;
@@ -98,7 +98,7 @@ public class Funds {
 		
 		JButton btn100 = new JButton("\u00A3100.00");
 		addFunctionality(btn100, 100.00);
-		btn100.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btn100.setFont(Globals.font);
 		GridBagConstraints gbc_btn100 = new GridBagConstraints();
 		gbc_btn100.insets = new Insets(0, 0, 5, 5);
 		gbc_btn100.gridx = 1;
@@ -107,7 +107,7 @@ public class Funds {
 		
 		JButton btn250 = new JButton("\u00A3250.00");
 		addFunctionality(btn250, 250.00);
-		btn250.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btn250.setFont(Globals.font);
 		GridBagConstraints gbc_btn250 = new GridBagConstraints();
 		gbc_btn250.insets = new Insets(0, 0, 5, 5);
 		gbc_btn250.gridx = 1;
@@ -121,7 +121,7 @@ public class Funds {
 				frmFunds.dispose();
 			}
 		});
-		btnGoBack.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btnGoBack.setFont(Globals.font);
 		GridBagConstraints gbc_btnGoBack = new GridBagConstraints();
 		gbc_btnGoBack.insets = new Insets(0, 0, 5, 5);
 		gbc_btnGoBack.gridx = 1;

@@ -8,11 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
 import functions.Databaser;
+import functions.Globals;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -68,7 +68,7 @@ public class Login {
 	 */
 	private void initialize() {
 		frmLogin = new JFrame();
-		frmLogin.getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		frmLogin.getContentPane().setFont(Globals.font);
 		frmLogin.setTitle("Login");
 		frmLogin.setBounds(100, 100, 450, 400);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +80,7 @@ public class Login {
 		frmLogin.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblLogin = new JLabel("Login to simple-shop");
-		lblLogin.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		lblLogin.setFont(Globals.font(24));
 		GridBagConstraints gbc_lblLogin = new GridBagConstraints();
 		gbc_lblLogin.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLogin.gridx = 1;
@@ -88,7 +88,7 @@ public class Login {
 		frmLogin.getContentPane().add(lblLogin, gbc_lblLogin);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblUsername.setFont(Globals.font);
 		GridBagConstraints gbc_lblUsername = new GridBagConstraints();
 		gbc_lblUsername.anchor = GridBagConstraints.WEST;
 		gbc_lblUsername.insets = new Insets(0, 0, 5, 5);
@@ -97,7 +97,7 @@ public class Login {
 		frmLogin.getContentPane().add(lblUsername, gbc_lblUsername);
 		
 		txtUsername = new JTextField();
-		txtUsername.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		txtUsername.setFont(Globals.font);
 		GridBagConstraints gbc_txtUsername = new GridBagConstraints();
 		gbc_txtUsername.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtUsername.insets = new Insets(0, 0, 5, 5);
@@ -107,7 +107,7 @@ public class Login {
 		txtUsername.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblPassword.setFont(Globals.font);
 		GridBagConstraints gbc_lblPassword = new GridBagConstraints();
 		gbc_lblPassword.anchor = GridBagConstraints.WEST;
 		gbc_lblPassword.insets = new Insets(0, 0, 5, 5);
@@ -116,7 +116,7 @@ public class Login {
 		frmLogin.getContentPane().add(lblPassword, gbc_lblPassword);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		txtPassword.setFont(Globals.font);
 		GridBagConstraints gbc_txtPassword = new GridBagConstraints();
 		gbc_txtPassword.insets = new Insets(0, 0, 5, 5);
 		gbc_txtPassword.fill = GridBagConstraints.HORIZONTAL;
@@ -141,7 +141,7 @@ public class Login {
 				} else JOptionPane.showMessageDialog(null, "Incorrect login details!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
-		btnLogin.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btnLogin.setFont(Globals.font);
 		GridBagConstraints gbc_btnLogin = new GridBagConstraints();
 		gbc_btnLogin.insets = new Insets(0, 0, 5, 5);
 		gbc_btnLogin.gridx = 1;
@@ -149,7 +149,7 @@ public class Login {
 		frmLogin.getContentPane().add(btnLogin, gbc_btnLogin);
 		
 		JLabel lblRegister = new JLabel("Don't have an account?");
-		lblRegister.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblRegister.setFont(Globals.font);
 		GridBagConstraints gbc_lblRegister = new GridBagConstraints();
 		gbc_lblRegister.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRegister.gridx = 1;
@@ -163,7 +163,7 @@ public class Login {
 				frmLogin.dispose();
 			}
 		});
-		btnRegister.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btnRegister.setFont(Globals.font);
 		GridBagConstraints gbc_btnRegister = new GridBagConstraints();
 		gbc_btnRegister.insets = new Insets(0, 0, 5, 5);
 		gbc_btnRegister.gridx = 1;

@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import functions.Databaser;
+import functions.Globals;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -78,7 +79,7 @@ public class Main {
 		});
 		
 		JLabel lblWelcome = new JLabel("Welcome, " + firstName + ".");
-		lblWelcome.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+		lblWelcome.setFont(Globals.font(24));
 		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
 		gbc_lblWelcome.gridwidth = 2;
 		gbc_lblWelcome.insets = new Insets(0, 0, 5, 5);
@@ -87,7 +88,7 @@ public class Main {
 		frmMain.getContentPane().add(lblWelcome, gbc_lblWelcome);
 		
 		JLabel lblBalance = new JLabel("Balance: £" + balance);
-		lblBalance.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblBalance.setFont(Globals.font(12));
 		GridBagConstraints gbc_lblBalance = new GridBagConstraints();
 		gbc_lblBalance.anchor = GridBagConstraints.EAST;
 		gbc_lblBalance.insets = new Insets(0, 0, 5, 5);
@@ -110,14 +111,14 @@ public class Main {
 				frmMain.dispose();
 			}
 		});
-		btnFunds.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnFunds.setFont(Globals.font(12));
 		GridBagConstraints gbc_btnFunds = new GridBagConstraints();
 		gbc_btnFunds.anchor = GridBagConstraints.WEST;
 		gbc_btnFunds.insets = new Insets(0, 0, 5, 5);
 		gbc_btnFunds.gridx = 2;
 		gbc_btnFunds.gridy = 1;
 		frmMain.getContentPane().add(btnFunds, gbc_btnFunds);
-		btnAccount.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnAccount.setFont(Globals.font(12));
 		GridBagConstraints gbc_btnAccount = new GridBagConstraints();
 		gbc_btnAccount.gridwidth = 2;
 		gbc_btnAccount.insets = new Insets(0, 0, 5, 5);
@@ -132,7 +133,7 @@ public class Main {
 				Databaser.log(uid, "Viewed orders.");
 			}
 		});
-		btnOrders.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnOrders.setFont(Globals.font(12));
 		GridBagConstraints gbc_btnOrders = new GridBagConstraints();
 		gbc_btnOrders.gridwidth = 2;
 		gbc_btnOrders.insets = new Insets(0, 0, 5, 5);
@@ -141,7 +142,7 @@ public class Main {
 		frmMain.getContentPane().add(btnOrders, gbc_btnOrders);
 		
 		JLabel lblSearch = new JLabel("Search for products:");
-		lblSearch.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblSearch.setFont(Globals.font);
 		GridBagConstraints gbc_lblSearch = new GridBagConstraints();
 		gbc_lblSearch.gridwidth = 2;
 		gbc_lblSearch.insets = new Insets(0, 0, 5, 5);
@@ -151,7 +152,7 @@ public class Main {
 		
 		txtSearch = new JTextField();
 		txtSearch.setColumns(1);
-		txtSearch.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		txtSearch.setFont(Globals.font(18));
 		GridBagConstraints gbc_txtSearch = new GridBagConstraints();
 		gbc_txtSearch.gridwidth = 2;
 		gbc_txtSearch.fill = GridBagConstraints.HORIZONTAL;
@@ -167,7 +168,7 @@ public class Main {
 				new Search(uid, search);
 			}
 		});
-		btnSearch.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btnSearch.setFont(Globals.font);
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
 		gbc_btnSearch.anchor = GridBagConstraints.NORTH;
 		gbc_btnSearch.gridwidth = 2;

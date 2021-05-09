@@ -7,7 +7,6 @@ import java.awt.Image;
 
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.imageio.ImageIO;
@@ -24,6 +23,8 @@ import java.awt.Color;
 import javax.swing.border.TitledBorder;
 
 import functions.Databaser;
+import functions.Globals;
+
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
@@ -67,7 +68,7 @@ public class Search {
 		frmSearch.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblSearch = new JLabel("Search for products:");
-		lblSearch.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		lblSearch.setFont(Globals.font(18));
 		GridBagConstraints gbc_lblSearch = new GridBagConstraints();
 		gbc_lblSearch.gridwidth = 3;
 		gbc_lblSearch.insets = new Insets(0, 0, 5, 5);
@@ -76,7 +77,7 @@ public class Search {
 		frmSearch.getContentPane().add(lblSearch, gbc_lblSearch);
 		
 		txtSearch = new JTextField();
-		txtSearch.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		txtSearch.setFont(Globals.font);
 		GridBagConstraints gbc_txtSearch = new GridBagConstraints();
 		gbc_txtSearch.gridwidth = 2;
 		gbc_txtSearch.insets = new Insets(0, 0, 5, 5);
@@ -93,7 +94,7 @@ public class Search {
 				showResults(txtSearch.getText());
 			}
 		});
-		btnSearch.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		btnSearch.setFont(Globals.font);
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
 		gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSearch.gridx = 4;
@@ -137,14 +138,14 @@ public class Search {
 				JPanel panelProductDetails = new JPanel();
 				panelProductDetails.setLayout(new BoxLayout(panelProductDetails, BoxLayout.Y_AXIS));
 				JLabel lblProduct = new JLabel(product.get(columns.indexOf("name")));
-				lblProduct.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+				lblProduct.setFont(Globals.font);
 				panelProductDetails.add(lblProduct);
 				JLabel lblPrice = new JLabel("£"+product.get(columns.indexOf("price")));
-				lblPrice.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+				lblPrice.setFont(Globals.font);
 				panelProductDetails.add(lblPrice);
 				panelProduct.add(panelProductDetails);
 				JButton btnOrder = new JButton("Order");
-				btnOrder.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+				btnOrder.setFont(Globals.font);
 				addOrderFunction(btnOrder);
 				panelProductDetails.add(btnOrder);
 				panel.add(panelProduct);
