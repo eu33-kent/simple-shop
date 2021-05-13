@@ -1,8 +1,6 @@
 package gui;
 
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -66,15 +64,8 @@ public class Main {
 		String firstName = details.get(columns.indexOf("firstName"));
 		String uid = details.get(columns.indexOf("uid"));
 		String balance = details.get(columns.indexOf("balance"));
-
-		// log that the user logged out before closing
-		frmMain.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				Databaser.log(uid, "Logged out.");
-				//frmMainMenu.dispose();
-				System.exit(0);
-			}
-		});
+		
+		Globals.logoutLog(frmMain, uid);
 		
 		JLabel lblWelcome = new JLabel("Welcome, " + firstName + ".");
 		lblWelcome.setFont(Globals.font(24));

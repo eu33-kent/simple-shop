@@ -60,13 +60,15 @@ public class Search {
 	private void initialize() {
 		frmSearch = new JFrame("Search Products");
 		frmSearch.setBounds(100, 100, 650, 650);
-		frmSearch.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frmSearch.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{25, 0, 0, 0, 0, 0, 25, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		frmSearch.getContentPane().setLayout(gridBagLayout);
+		
+		Globals.logoutLog(frmSearch, uid);
 		
 		JLabel lblSearch = new JLabel("Search for products:");
 		lblSearch.setFont(Globals.font(18));

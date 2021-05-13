@@ -3,6 +3,10 @@ package functions;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 
 public class Globals {
 
@@ -18,6 +22,17 @@ public class Globals {
 		gbc.gridx = gridx;
 		gbc.gridy = gridy;
 		return gbc;
+	}
+	
+	public static void logoutLog(JFrame frame, String uid) {
+		// log that the user logged out before closing
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				Databaser.log(uid, "Logged out.");
+				//frame.dispose();
+				System.exit(0);
+			}
+		});
 	}
 
 }
