@@ -7,18 +7,18 @@ public class Account {
 
 	private JFrame frmAccount;
 	
-	private String login;
+	private String uid;
 
 	/**
 	 * Create the application.
 	 */
-	public Account(String login) {
+	public Account(String uid) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-		this.login = login;
+		this.uid = uid;
 		initialize();
 		frmAccount.setVisible(true);
 	}

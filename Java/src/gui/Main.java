@@ -91,7 +91,7 @@ public class Main {
 		JButton btnAccount = new JButton("View Account Details");
 		btnAccount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Account(login);
+				new Account(uid);
 				Databaser.log(uid, "Viewed account details.");
 			}
 		});
@@ -115,7 +115,7 @@ public class Main {
 		JButton btnOrders = new JButton("View Orders");
 		btnOrders.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Orders(login);
+				new Orders(uid);
 				Databaser.log(uid, "Viewed orders.");
 			}
 		});
