@@ -5,7 +5,7 @@ USE simpleShop;
 
 CREATE TABLE users (
     uid INT PRIMARY KEY AUTO_INCREMENT,
-    login VARCHAR(20) UNIQUE NOT NULL,
+    login VARCHAR(20) UNIQUE NOT NULL CHECK (LENGTH(login) > 2),
     passHash VARCHAR(50) NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
@@ -35,6 +35,8 @@ CREATE TABLE orders (
 
 INSERT INTO users (login, passHash, firstName, lastName)
 VALUES ('tricksy.', 'fba14b5274133422ebbe7c5c8496f47a', 'Elliot', 'Ursell');
+INSERT INTO users (login, passHash, firstName, lastName)
+VALUES ('test', 'fba14b5274133422ebbe7c5c8496f47a', 'test', 'test');
 
 INSERT INTO products (name, price, imgPath)
 VALUES ('NoVidIdea Graphics Card', 9999.98, 'https://assets.nvidia.partners/images/png/nvidia-geforce-rtx-3090.png');
