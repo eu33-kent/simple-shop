@@ -142,7 +142,8 @@ public class Main {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String search = txtSearch.getText();
-				new Search(uid, search);
+				new Search(uid, login, search);
+				frmMain.dispose();
 			}
 		});
 		btnSearch.setFont(Globals.font);

@@ -31,5 +31,4 @@ public class Account {
 		frmAccount.setBounds(100, 100, 450, 300);
 		frmAccount.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
-
 }

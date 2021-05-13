@@ -55,9 +55,9 @@ public class Orders {
 		frmOrders.setBounds(100, 100, 500, 450);
 		frmOrders.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{25, 0, 25, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 25, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		frmOrders.getContentPane().setLayout(gridBagLayout);
 		
@@ -77,7 +77,7 @@ public class Orders {
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
-		String ordersQuery = "SELECT * FROM orders o JOIN users u ON o.uid = u.uid JOIN products p ON o.pid = p.pid WHERE o.uid = ?";
+		String ordersQuery = "SELECT * FROM orders o JOIN users u ON o.uid = u.uid JOIN products p ON o.pid = p.pid WHERE o.uid = ? ORDER BY timestamp";
 		String[] ordersParams = new String[] {uid};
 		ArrayList<ArrayList<String>> orders = Databaser.query(ordersQuery, ordersParams);
 		ArrayList<String> columns = Databaser.getColumns(ordersQuery, ordersParams);
