@@ -88,11 +88,12 @@ public class Main {
 		gbc_lblBalance.anchor = GridBagConstraints.EAST;
 		frmMain.getContentPane().add(lblBalance, gbc_lblBalance);
 		
-		JButton btnAccount = new JButton("View Account Details");
+		JButton btnAccount = new JButton("Account Details");
 		btnAccount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Account(uid);
 				Databaser.log(uid, "Viewed account details.");
+				frmMain.dispose();
 			}
 		});
 		
