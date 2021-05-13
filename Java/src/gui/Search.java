@@ -17,7 +17,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
 
@@ -25,6 +24,7 @@ import functions.Databaser;
 import functions.Globals;
 
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 
@@ -59,7 +59,7 @@ public class Search {
 		frmSearch.setBounds(100, 100, 650, 650);
 		frmSearch.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{25, 0, 0, 0, 0, 0, 25, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
@@ -92,7 +92,6 @@ public class Search {
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Results (displays 10):", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		GridBagConstraints gbc_scrollPane = Globals.gbc(1,5);
 		gbc_scrollPane.gridwidth = 5;
@@ -120,7 +119,9 @@ public class Search {
 				ImageIcon imageNew = new ImageIcon(image);
 				JPanel panelProduct = new JPanel();
 				panelProduct.setLayout(new FlowLayout(FlowLayout.LEFT));
-				panelProduct.add(new JLabel(imageNew));
+				JLabel lblImage = new JLabel(imageNew);
+				lblImage.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				panelProduct.add(lblImage);
 				JPanel panelProductDetails = new JPanel();
 				panelProductDetails.setLayout(new BoxLayout(panelProductDetails, BoxLayout.Y_AXIS));
 				JLabel lblProduct = new JLabel(product.get(columns.indexOf("name")));
