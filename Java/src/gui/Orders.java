@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
@@ -62,7 +61,7 @@ public class Orders {
 		frmOrders.getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblOrders = new JLabel("Your orders:");
-		lblOrders.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblOrders.setFont(Globals.font);
 		GridBagConstraints gbc_lblOrders = Globals.gbc(1, 1);
 		frmOrders.getContentPane().add(lblOrders, gbc_lblOrders);
 		
