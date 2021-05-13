@@ -164,6 +164,11 @@ public class Search {
 				panelProductDetails.add(btnOrder);
 				panel.add(panelProduct);
 			}
+			if (products.size() == 0) {
+				JLabel lblNoResults = new JLabel("No Results.");
+				lblNoResults.setFont(Globals.font);
+				panel.add(lblNoResults);
+			}
 			Databaser.log(uid, "Searched for '" + query + "'.");
 		} catch (Exception e) {
 			e.printStackTrace();
