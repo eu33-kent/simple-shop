@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.imageio.ImageIO;
@@ -30,7 +32,7 @@ import java.awt.FlowLayout;
 
 public class Search {
 
-	private String uid, search;
+	private String uid, login, search;
 	private JFrame frmSearch;
 	private JTextField txtSearch;
 	private JScrollPane scrollPane;
@@ -38,13 +40,14 @@ public class Search {
 	/**
 	 * Create the application.
 	 */
-	public Search(String uid, String search) {
+	public Search(String uid, String login, String search) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		this.uid = uid;
+		this.login = login;
 		this.search = search;
 		initialize();
 		frmSearch.setVisible(true);
@@ -97,6 +100,18 @@ public class Search {
 		gbc_scrollPane.gridwidth = 5;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		frmSearch.getContentPane().add(scrollPane, gbc_scrollPane);
+		
+		JButton btnGoBack = new JButton("Go Back");
+		btnGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Main(login);
+				frmSearch.dispose();
+			}
+		});
+		btnGoBack.setFont(Globals.font);
+		GridBagConstraints gbc_btnGoBack = Globals.gbc(2,6);
+		gbc_btnGoBack.gridwidth = 3;
+		frmSearch.getContentPane().add(btnGoBack, gbc_btnGoBack);
 	}
 	
 	private void showResults(String query) {
@@ -133,7 +148,19 @@ public class Search {
 				panelProduct.add(panelProductDetails);
 				JButton btnOrder = new JButton("Order");
 				btnOrder.setFont(Globals.font);
-				addOrderFunction(btnOrder);
+				btnOrder.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						double price = Double.parseDouble(product.get(columns.indexOf("price")));
+						double balance = Double.parseDouble(Databaser.query("SELECT balance FROM users WHERE uid = ?", new String[] {uid}).get(0).get(0));
+						if (balance-price >= 0) {
+							String pid = product.get(columns.indexOf("pid"));
+							Databaser.modify("INSERT INTO orders (uid, pid, timestamp) VALUES (?, ?, NOW())", new String[] {uid, pid});
+							Databaser.modify("UPDATE users SET balance = ? WHERE uid = ?", new String[] {String.valueOf(balance-price), uid});
+							Databaser.log(uid, "Purchased pid: " + pid);
+							JOptionPane.showMessageDialog(null, "Your order was successfully placed.", "Order Placed", JOptionPane.INFORMATION_MESSAGE);
+						} else JOptionPane.showMessageDialog(null, "You have insufficient balance to order this product.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				});
 				panelProductDetails.add(btnOrder);
 				panel.add(panelProduct);
 			}
@@ -141,9 +168,5 @@ public class Search {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	private void addOrderFunction(JButton btn) {
-		// TODO
 	}
 }
