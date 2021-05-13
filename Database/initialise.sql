@@ -28,6 +28,7 @@ CREATE TABLE orders (
 	oid INT PRIMARY KEY AUTO_INCREMENT,
     uid INT NOT NULL,
     pid INT NOT NULL,
+    timestamp DATETIME NOT NULL,
     FOREIGN KEY (uid) REFERENCES users(uid),
     FOREIGN KEY (pid) REFERENCES products(pid)
 );
@@ -43,3 +44,6 @@ INSERT INTO products (name, price, imgPath)
 VALUES ('Freeddo', 0.05, 'https://upload.wikimedia.org/wikipedia/en/a/a1/Freddoaus.jpg');
 INSERT INTO products (name, price, imgPath)
 VALUES ('Nokeya Brick', 4.5, 'https://i.redd.it/3xzvk9eg7aj11.jpg');
+
+INSERT INTO orders (uid, pid, timestamp)
+VALUES (1, 1, NOW());
