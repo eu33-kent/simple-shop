@@ -97,7 +97,7 @@ public class Password {
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Main(login);
+				new Account(uid);
 				frmPassword.dispose();
 			}
 		});

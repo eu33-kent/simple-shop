@@ -147,6 +147,7 @@ public class Account {
 		btnPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Password(uid, login);
+				frmAccount.dispose();
 			}
 		});
 		btnPassword.setFont(Globals.font);
